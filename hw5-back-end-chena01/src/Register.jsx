@@ -1,0 +1,99 @@
+import React,{useEffect, useState} from "react";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from 'react-toastify';
+
+const initialState ={
+    hname:"",
+    noroom:"",
+    zipcode:"",
+    country:"",
+    city:""
+}
+const Register=()=>{
+    const [state,setState] = useState(initialState);
+   const {hname,noroom,zipcode,country,city}=state;
+   const navigate =useNavigate;
+
+   const addHouse= async(data)=>{
+    const response = await axios.post("http://localhost:5000/register",data);
+    if (response.status===200) {
+        toast.success(response.data)
+    }
+   };
+
+   const updateHouse= async(data, id)=>{
+    const response = await axios.put(`http://localhost:5000/update/${id}`,data);
+    if (response.status===200) {
+        toast.success(response.data)
+    }
+   };
+
+   const handleSubmit=(e)=>{
+    e.preventDefault();
+    if (!hname||!noroom || !zipcode || !country ||!country ||!city) {
+      toast.error("you cannot submit empty form")  
+    }else{ if (!id) {
+        addHouse(state);
+        navigate('/');
+        setTimeout(()=>navigate.push('/'),500)
+        
+    }else{
+        updateHouse(state,id)
+        navigate('/');
+    setTimeout(()=>navigate.push('/'),500)
+    }
+    
+        
+    }
+    
+   }
+   const {id} = useParams();
+   useEffect(()=>{
+    if (id) {
+        getSingeHouse(id);
+    }
+   }, [id])
+   
+   const getSingeHouse = async(id)=>{
+        const response = await axios.get(`http://localhost:5000/singlehouse/${id}`);
+        if (response.status===200) {
+            setState({...response.data})
+        }
+    
+}
+
+
+   const InputChange=(e)=>{
+    let { name, value} = e.target;
+    setState({...state, [name]: value})
+   };
+return (
+    <div className="Register">
+        <div className="container" style={{marginTop: "70px"}}>
+        <h2>ADD NEW HOUSE</h2>
+        
+        <form  onSubmit={handleSubmit}>
+            <div className='inputdiv'>
+            <label>House Name:</label>
+            <input type="text" placeholder='Enter house Name' id="hname" name="hname" required onChange={InputChange} value={hname}/></div>
+            <div className='inputdiv'>
+            
+
+            <label>number of room:</label>
+            <input type="text" placeholder='Enter number of room' id="noroom" name="noroom" required onChange={InputChange} value={noroom}/></div>
+            <div className='inputdiv'>
+            <label>Zip code:</label>
+            <input type="number" placeholder='Enter house zip code' id="zipcode" name="zipcode" required onChange={InputChange} value={zipcode}/></div>
+            <div className='inputdiv'><label>Country:</label>
+            <input type="text" placeholder='Enter your Country' name="country" id="country" required onChange={InputChange} value={country}/></div>
+            <div className='inputdiv'><label>City:</label>
+            <input type="text" placeholder='Enter your City' name="city" id="city" required onChange={InputChange} value={city}/></div>
+             <input type="submit" value={id ? "update" : "Register"}/>
+             
+        </form>
+        </div>
+    </div>
+)
+}
+export default Register;
