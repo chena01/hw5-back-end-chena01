@@ -58,7 +58,7 @@ const Register=()=>{
    const getSingeHouse = async(id)=>{
         const response = await axios.get(`http://localhost:5000/singlehouse/${id}`);
         if (response.status===200) {
-            setState({...response.data})
+            setState(response.data[0])
         }
     
 }
