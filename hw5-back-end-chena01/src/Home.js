@@ -32,13 +32,13 @@ const Home =()=> {
                 <table className='styled-table'>
                     <thead>
                         <tr>
-                            <th style={{textAlign: "center"}}>serial number</th> 
-                            <th style={{textAlign: "center"}}>House name</th>
-                            <th style={{textAlign: "center"}}>No of room</th>
-                            <th style={{textAlign: "center"}}>Zip code</th>
-                            <th style={{textAlign: "center"}}>country</th>
-                            <th style={{textAlign: "center"}}>city</th>
-                            <th style={{textAlign: "center"}}>Action</th>
+                            <th style={{textAlign: "center", color: "#01497c"}}>serial number</th> 
+                            <th style={{textAlign: "center", color: "#01497c"}}>House name</th>
+                            <th style={{textAlign: "center", color: "#01497c"}}>No of room</th>
+                            <th style={{textAlign: "center", color: "#01497c"}}>Zip code</th>
+                            <th style={{textAlign: "center", color: "#01497c"}}>country</th>
+                            <th style={{textAlign: "center", color: "#01497c"}}>city</th>
+                            <th style={{textAlign: "center", color: "#01497c"}}>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,17 +46,17 @@ const Home =()=> {
                             data.map((item, index)=>{
                                 return (
                                     <tr key ={index}>
-                                        <th scope='row'>{index+1}</th>
-                                        <td>{item.hname}</td>
-                                        <td>{item.noroom}</td>
-                                        <td>{item.location}</td>
-                                        <td>{item.country}</td>
-                                        <td>{item.city}</td>
+                                        <th style={{color: "#669bb"}} scope='row'>{index+1}</th>
+                                        <td style={{color: "#669bb"}}>{item.hname}</td>
+                                        <td style={{color: "#669bb"}}>{item.noroom}</td>
+                                        <td style={{color: "#669bb"}}>{item.zipcode}</td>
+                                        <td style={{color: "#669bb"}}>{item.country}</td>
+                                        <td style={{color: "#669bb"}}>{item.city}</td>
                                         <td><Link to={`/update/${item.id}`}>
-                                            <button className='btn btnSuccess'>Edit</button>
+                                            <button style={{backgroundColor: "#01497c"}} className='btn btnSuccess'>Edit</button>
                                         </Link></td>
                                         <td><Link to={`/user/${item.id}`}>
-                                            <button className='btn btnSuccess'onClick={()=>onDeleteHouse(item.id)}>Delete</button>
+                                            <button style={{backgroundColor: "#c1121f"}} className='btn btnSuccess'onClick={()=>onDeleteHouse(item.id)}>Delete</button>
                                         </Link></td>
                                         <td><Link to={`/view/${item.id}`}>
                                             <button className='btn btnSuccess'>View</button>

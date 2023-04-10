@@ -26,34 +26,34 @@ const View =()=> {
             <div>
                 
                 <div style={{marginTop: "150px"}}>
-                    <div className="card">
+                    <div className="card"style={{ backgroundColor: "#d3f8e2", margin: "0rem 0rem 0rem 30rem ", padding: "1rem 3rem 1rem 3rem"}} >
+                    
                         <div className="card-header">
-                        <h1>show House details</h1>
+                        <h1 style={{color: "#01497c"}}>show House details</h1>
                         </div>
-                        <div className="container">
-                            <strong>ID:</strong>
-                            <strong>{user?.id}</strong>
+                            <strong style={{color: "#01497c"}}>ID:</strong>
+                            <strong style={{color: "#01497c"}}>{user?.id}</strong>
                             <br />
-                            <strong>House name:</strong>
-                            <strong>{user?.hname}</strong>
+                            <strong style={{color: "#01497c"}}>House name:</strong>
+                            <strong style={{color: "#01497c"}}>{user?.hname}</strong>
                             <br />
-                            <strong>Number of room:</strong>
-                            <strong>{user?.noroom}</strong>
+                            <strong style={{color: "#01497c"}}>Number of room:</strong>
+                            <strong style={{color: "#01497c"}}>{user?.noroom}</strong>
                             <br />
-                            <strong>Zipcode:</strong>
-                            <strong>{user.zipcode}</strong>
+                            <strong style={{color: "#01497c"}}>Zipcode:</strong>
+                            <strong style={{color: "#01497c"}}>{user.zipcode}</strong>
                             <br />
-                            <strong>Country:</strong>
-                            <strong>{user?.country}</strong>
+                            <strong style={{color: "#01497c"}}>Country:</strong>
+                            <strong style={{color: "#01497c"}}>{user?.country}</strong>
                             <br />
-                            <strong>city:</strong>
-                            <strong>{user?.city}</strong>
+                            <strong style={{color: "#01497c"}}>city:</strong>
+                            <strong style={{color: "#01497c"}}>{user?.city}</strong>
                             <br />
-                            <Link to="/">
-                                <button>go home</button>
+                            <Link to="/" style={{color: "#01497c"}}>
+                                <button style={{backgroundColor: "#01497c"}}>go home</button>
                             </Link>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
         );
